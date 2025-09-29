@@ -1,0 +1,424 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Cards */
+.upload-card,
+.results-card,
+.loading-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.upload-card h2,
+.results-card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 2rem;
+}
+
+.upload-card p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.results-message {
+    text-align: center;
+    color: #4a90e2;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Upload Area */
+.upload-area {
+    border: 3px dashed #ddd;
+    border-radius: 15px;
+    padding: 60px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    position: relative;
+    background: #fafafa;
+}
+
+.upload-area:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.upload-area.dragover {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.upload-placeholder p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.upload-placeholder span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+#imagePreview {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Buttons */
+.analyze-btn,
+.analyze-again-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.analyze-btn:hover:not(:disabled),
+.analyze-again-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.analyze-btn:disabled {
+    background: #ccc !important;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.analyze-again-btn {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    margin-top: 20px;
+}
+
+/* Results */
+.macros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.macro-card {
+    background: #f8f9ff;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease;
+}
+
+.macro-card:hover {
+    transform: translateY(-5px);
+}
+
+.macro-card.calories {
+    border-color: #ff6b6b;
+    background: linear-gradient(135deg, #fff5f5, #ffebeb);
+}
+
+.macro-card.protein {
+    border-color: #4ecdc4;
+    background: linear-gradient(135deg, #f0fffd, #e6fffc);
+}
+
+.macro-card.carbs {
+    border-color: #45b7d1;
+    background: linear-gradient(135deg, #f0f9ff, #e6f4ff);
+}
+
+.macro-card.fat {
+    border-color: #96ceb4;
+    background: linear-gradient(135deg, #f0fff8, #e6fff2);
+}
+
+.macro-card h3 {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.macro-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.macro-unit {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* Detected Foods */
+.detected-foods {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.detected-foods h3 {
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.foods-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.food-tag {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Loading */
+.loading-card {
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.loading-card p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.loading-subtext {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Features */
+.features-section {
+    margin: 60px 0;
+    text-align: center;
+    color: white;
+}
+
+.features-section h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Error Message */
+.error-message {
+    background: #ff6b6b;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Success Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.results-card {
+    animation: fadeInUp 0.5s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .upload-card,
+    .results-card,
+    .loading-card {
+        padding: 25px;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .macros-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .upload-area {
+        padding: 40px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .macros-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .upload-card h2,
+    .results-card h2 {
+        font-size: 1.5rem;
+    }
+}
